@@ -59,6 +59,7 @@ INSTALLED_APPS = [
 
     #Project Apps
     'users',
+    'questions',
 
     
 ]
