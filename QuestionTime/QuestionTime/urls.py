@@ -69,6 +69,5 @@ urlpatterns = [
 
     # Finally Index Page
     re_path(r"^.*$", IndexTemplateView.as_view(), name="entry-point"),
-    #path('', IndexTemplateView.as_view(), name="entry-point"),
 
 ]
