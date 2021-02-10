@@ -61,6 +61,10 @@ urlpatterns = [
     #Implmented Rest API for user app
     path("api/", include("users.api.urls")),
 
+    #Implmented Rest API for questions app
+    path("api/", include("questions.api.urls")),
+
+
 
 
     # Finally Index Page

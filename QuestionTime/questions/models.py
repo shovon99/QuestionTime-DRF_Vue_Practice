@@ -7,6 +7,7 @@ class Question(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    # Give only content access to user
     content = models.CharField(max_length=240)
     slug = models.SlugField(max_length=255, unique=True)
 
@@ -21,7 +22,8 @@ class Answer(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    
+    # Give only body access to user
     body = models.TextField()
     question = models.ForeignKey(Question,
                                 on_delete=models.CASCADE,
