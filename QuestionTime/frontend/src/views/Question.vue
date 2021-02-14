@@ -7,16 +7,29 @@
             <p class="mb-3">Posted by: 
                 <span class="author">{{ question.author }}</span>
             </p>
-            <p>Total Answers: {{ question.answers_count }}</p>
-            <p>Created at: {{ question.created_at }}</p>
+            <p>
+                Total Answers: {{ question.answers_count }} &#8901;
+                Created at: {{ question.created_at }}
+            </p>
+            <hr>
+        </div>
+
+        
+
+        <div class="container"> 
+            <AnswerComponent
+                v-for="(answer, index) in answers"
+                :answer="answer"
+                :key="index"
+            />
         </div>
     </div>
 </template>
 
 <script>
 
-import { apiService } from "../common/api.service"
-
+import { apiService } from "@/common/api.service"
+import AnswerComponent from "@/components/Answer"
 
 export default {
     name: "Question",
@@ -26,9 +39,13 @@ export default {
             required: true
         }
     },
+    components: {
+        AnswerComponent
+    },
     data(){
         return{
-            question: {}
+            question: {},
+            answers: []
         }
     },
     methods: {
@@ -44,10 +61,19 @@ export default {
                     this.setPageTitle(data.content)
                 })
 
+        },
+        getQuestionAnswers(){
+            let endpoint = `/api/questions/${this.slug}/answers/`
+
+            apiService(endpoint)
+                .then(data => {
+                    this.answers=data.results;
+                })
         }
     },
     created() {
-        this.getQuestionData()
+        this.getQuestionData();
+        this.getQuestionAnswers();
     }
 }
 </script>

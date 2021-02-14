@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import Question from "../views/Question.vue"
+import QuestionEditor from "../views/QuestionEditor.vue"
 
 
 const routes = [
@@ -20,6 +21,11 @@ const routes = [
     name: "Question",
     component: Question,
     props: true
+  },
+  {
+    path: "/ask",
+    name: "Question-Editor",
+    component: QuestionEditor,
   }
 ];
 

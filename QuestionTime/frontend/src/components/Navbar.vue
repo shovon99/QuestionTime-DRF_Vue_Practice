@@ -20,19 +20,28 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active mx-1 mb-1">
-            <router-link :to="{ name: 'Home' }" class="btn btn-sm btn-success">
+            <router-link :to="{ name: 'Home' }" 
+              class="btn btn-sm btn-primary">
               Home
             </router-link>
           </li>
           <li class="nav-item mx-1 mb-1">
-            <router-link :to="{ name: 'About' }" class="btn btn-sm btn-success">
+            <router-link :to="{ name: 'Question-Editor' }" 
+              class="btn btn-sm btn-danger">
+              Ask Question
+            </router-link>
+          </li>
+          <li class="nav-item mx-1 mb-1">
+            <router-link :to="{ name: 'About' }" 
+              class="btn btn-sm btn-success">
               About
             </router-link>
           </li>
           <li class="nav-item mx-1 mb-1">
-            <a class="btn btn-sm btn-outline-danger" href="/accounts/logout/"
-              >Log Out</a
-            >
+            <a class="btn btn-sm btn-outline-danger" 
+              href="/accounts/logout/">
+              Log Out
+            </a>
           </li>
         </ul>
       </div>

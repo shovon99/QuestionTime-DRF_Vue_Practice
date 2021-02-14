@@ -14,7 +14,7 @@ from rest_framework.permissions import IsAuthenticated
 from questions.models import Question, Answer
 
 class QuestionViewSet(viewsets.ModelViewSet):
-    queryset = Question.objects.all()
+    queryset = Question.objects.all().order_by("-created_at")
     lookup_field = "slug"
     serializer_class = QuestionSerializer
     permission_classes =[IsAuthenticated, IsAuthorOrReadOnly]
@@ -44,7 +44,8 @@ class AnswerListAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         kwarg_slug = self.kwargs.get("slug")
-        return Answer.objects.filter(question__slug=kwarg_slug).order_by("-created_at")
+        return (Answer.objects.filter(question__slug=kwarg_slug)
+                                        .order_by("-created_at"))
 
 
 class AnswerRUDAPIView(generics.RetrieveUpdateDestroyAPIView):
