@@ -17,8 +17,15 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
+      
+
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <span class="navbar-text">
+              Welcome, {{username}}
+            </span>
+          </li>
           <li class="nav-item active mx-1 mb-1">
             <router-link :to="{ name: 'Home' }" 
               class="btn btn-sm btn-primary">
@@ -50,8 +57,28 @@
 </template>
 
 <script>
+import { apiService } from "@/common/api.service"
+
 export default {
-  name: "NavbarComponent"
+
+  name: "NavbarComponent",
+  data(){
+    return {
+      username: ""
+    }
+  },
+  methods: {
+    getUserName(){
+      let endpoint = `/api/user/`
+        apiService(endpoint)
+          .then(data => {
+            this.username = data.username;
+          })
+    }
+  },
+  created() {
+    this.getUserName();
+  }
 };
 </script>
 
