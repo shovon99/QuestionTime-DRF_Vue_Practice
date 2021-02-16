@@ -1,4 +1,3 @@
-import django_heroku
 """
 Django settings for QuestionTime project.
 
@@ -26,7 +25,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'u%a5h_x5_a0pl-xv1=#nse$*or_y$&clc8@u+@dj$fthtrx4=_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -197,6 +196,3 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'frontend', 'webpack-stats.json'),
     }
 }
-
-
-django_heroku.settings(locals())
